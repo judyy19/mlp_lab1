@@ -3,8 +3,14 @@ from msrest.authentication import CognitiveServicesCredentials
 from azure.cognitiveservices.vision.computervision.models import OperationStatusCodes
 import time
 
-endpoint = "ENTER ENDPOINT HERE"
-key = "ENTER KEY HERE"
+
+with open(".env") as f:
+    lines = f.readlines()
+    endpoint = lines[0].strip().split("=")[-1]
+    key = lines[1].strip().split("=")[-1]
+
+    # endpoint = "https://chuchun-computer-vision-api.cognitiveservices.azure.com/"
+    # key = "59sYOLo1tyaU6KSjMb8FSR9bdIjUjA2CuBfLHVWaQIuxs6tba0eJJQQJ99BAACYeBjFXJ3w3AAAFACOGyNM7"
 
 credentials = CognitiveServicesCredentials(key)
 
